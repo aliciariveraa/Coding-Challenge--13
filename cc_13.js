@@ -35,3 +35,19 @@ function addEmployeeCard(name, position) {
   addEmployeeCard("John Doe", "Software Engineer");
   addEmployeeCard("Jake Foe", "Product Manager");
   
+
+  // Task 3 - Bulk Update on Employee Cards
+
+  function updateAllEmployeeCards() {
+    const cards = document.querySelectorAll('.employee-card');
+    const cardsArray = Array.from(cards); // Convert NodeList to array
+  
+    cardsArray.forEach(card => {
+      card.style.backgroundColor = '#0000FF'; ; // Apply a background color change
+      card.style.border = '2px solid #333'; // Add a border for highlighting
+    });
+  }
+  
+  // Example usage
+  updateAllEmployeeCards();
+  
