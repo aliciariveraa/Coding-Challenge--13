@@ -94,6 +94,47 @@ document.getElementById('employeeContainer').addEventListener('click', function(
   }
   
 
-    
+// Task 5 - Inline Editing for Employee Card
 
+  function enableInlineEditing() {
+    const cards = document.querySelectorAll('.employee-card');
   
+    cards.forEach(card => {
+      card.addEventListener('dblclick', function() {
+        const nameElement = card.querySelector('h3');
+        const positionElement = card.querySelector('p');
+  
+        // Replace text with input fields
+        const nameInput = document.createElement('input');
+        nameInput.value = nameElement.textContent;
+  
+        const positionInput = document.createElement('input');
+        positionInput.value = positionElement.textContent;
+  
+        // Create a save button
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Save';
+        saveButton.onclick = function() {
+          nameElement.textContent = nameInput.value;
+          positionElement.textContent = positionInput.value;
+  
+          // Remove the input fields and save button
+          card.removeChild(nameInput);
+          card.removeChild(positionInput);
+          card.removeChild(saveButton);
+        };
+  
+        // Replace elements with input fields and save button
+        card.appendChild(nameInput);
+        card.appendChild(positionInput);
+        card.appendChild(saveButton);
+  
+        // Remove original text content
+        card.removeChild(nameElement);
+        card.removeChild(positionElement);
+      });
+    });
+  }
+  
+  // Example usage: Enable inline editing on employee cards
+  enableInlineEditing();
